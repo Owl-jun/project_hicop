@@ -31,12 +31,12 @@
 
 ## 향후 계획 (Roadmap)
 
-- IOCP 모델 구현 (WinSock)
-- 가독성을 위한 헬퍼 클래스 구현
-- I/O Task , ServerLogic Task 철저히 분리 (각각 전용 스레드풀)
-- Session 등 원활한 서버 관리를 위한 클래스 설계
-- 테스트
-- 문서화
+- [x] IOCP 모델 구현 (WinSock) (250530)
+- [ ] 가독성을 위한 헬퍼 클래스 구현
+- [ ] I/O Task , ServerLogic Task 철저히 분리 (각각 전용 스레드풀)
+- [ ] Session 등 원활한 서버 관리를 위한 클래스 설계
+- [ ] 테스트
+- [ ] 문서화
 
 ---
 
