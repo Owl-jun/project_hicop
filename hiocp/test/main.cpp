@@ -76,6 +76,7 @@ void HandleRecv(IOContext* ctx, size_t transferred) {
 	std::cout << "Received : " << data << std::endl;
 	ctx->wsabuf.len = strlen(ctx->buffer);
 	ctx->oper = OPER::SEND;
+	ZeroMemory(&ctx->overlapped, sizeof(ctx->overlapped));
 	WSASend(ctx->clientSock, &ctx->wsabuf, 1,nullptr, 0, &ctx->overlapped, nullptr);
 }
 
@@ -83,6 +84,7 @@ void HandleSend(IOContext* ctx) {
 	std::cout << "Send Success " << std::endl;
 	ctx->wsabuf.len = sizeof(ctx->buffer);
 	ctx->oper = OPER::RECV;
+	ZeroMemory(&ctx->overlapped, sizeof(ctx->overlapped));
 	WSARecv(ctx->clientSock, &ctx->wsabuf, 1, nullptr, &ctx->flags, &ctx->overlapped, nullptr);
 }
 
