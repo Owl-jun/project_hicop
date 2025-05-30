@@ -53,10 +53,8 @@ int main() {
 
 ## 향후 계획 (Roadmap)
 
-- Socket , Listener , Session , IOContext 등 구조화된 컴포넌트 추가
-- 커스텀 에러 처리기 / 로깅 시스템 도입
-- 벤치마크 테스트 코드 추가
-
+- IOCP 채팅 서버 구현 (WinSock 활용)
+- 리팩토링 하면서 라이브러리화
 
 ---
 

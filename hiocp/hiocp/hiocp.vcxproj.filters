@@ -4,10 +4,12 @@
     <ClCompile Include="src\pch.cpp" />
     <ClCompile Include="src\hiocp.cpp" />
     <ClCompile Include="src\NetSystem.cpp" />
+    <ClCompile Include="src\Socket.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\pch.h" />
     <ClInclude Include="include\hiocp.hpp" />
     <ClInclude Include="include\NetSystem.hpp" />
+    <ClInclude Include="include\Socket.hpp" />
   </ItemGroup>
 </Project>
