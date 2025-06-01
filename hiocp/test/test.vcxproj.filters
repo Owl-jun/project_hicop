@@ -1,25 +1,68 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="소스 파일">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="pch.cpp" />
+    <ClCompile Include="WinSockManager.cpp">
+      <Filter>WinSockManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Session.cpp">
+      <Filter>Session</Filter>
+    </ClCompile>
+    <ClCompile Include="SessionManager.cpp">
+      <Filter>Session</Filter>
+    </ClCompile>
+    <ClCompile Include="Server.cpp">
+      <Filter>Server</Filter>
+    </ClCompile>
+    <ClCompile Include="IOHandler.cpp">
+      <Filter>IO</Filter>
+    </ClCompile>
+    <ClCompile Include="LogicWorker.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="utils">
+      <UniqueIdentifier>{4e3c630a-2e56-4bc3-b37c-130a675414f8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="헤더 파일">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    <Filter Include="Contexts">
+      <UniqueIdentifier>{997baa99-6e1d-4454-84d1-da27e64b3003}</UniqueIdentifier>
     </Filter>
-    <Filter Include="리소스 파일">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    <Filter Include="WinSockManager">
+      <UniqueIdentifier>{0d58eb50-75a6-470e-8aaa-dd2c68a5fa62}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Session">
+      <UniqueIdentifier>{88ad6814-5c13-48d5-9529-3d6762bb79fd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Server">
+      <UniqueIdentifier>{4a729e3a-e356-4bf0-a646-73ad27d39645}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="IO">
+      <UniqueIdentifier>{8c4391c9-99a6-4444-b221-87f63a22fdc8}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="back.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
+    <ClInclude Include="utils.hpp">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="pch.h" />
+    <ClInclude Include="CustomStructs.hpp">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="WinSockManager.hpp">
+      <Filter>WinSockManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Session.hpp">
+      <Filter>Session</Filter>
+    </ClInclude>
+    <ClInclude Include="SessionManager.hpp">
+      <Filter>Session</Filter>
+    </ClInclude>
+    <ClInclude Include="Server.hpp">
+      <Filter>Server</Filter>
+    </ClInclude>
+    <ClInclude Include="IOHandler.hpp">
+      <Filter>IO</Filter>
+    </ClInclude>
+    <ClInclude Include="LogicWorker.hpp" />
   </ItemGroup>
 </Project>
