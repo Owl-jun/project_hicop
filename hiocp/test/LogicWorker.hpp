@@ -20,7 +20,7 @@ public:
 		return Instance;
 	}
 	void Run();
-	void PustTask(Task&& t);
+	void PustTask(Task t);
 	void process(std::string msg);
 };
 

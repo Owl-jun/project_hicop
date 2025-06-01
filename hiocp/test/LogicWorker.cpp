@@ -34,7 +34,7 @@ void LogicWorker::Run() {
 	}
 }
 
-void LogicWorker::PustTask(Task&& t)
+void LogicWorker::PustTask(Task t)
 {
 	{
 		std::lock_guard<std::mutex> lock(qMutex);
