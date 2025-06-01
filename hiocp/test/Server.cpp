@@ -40,7 +40,7 @@ void Server::Thread_Work(HANDLE iocp)
 
 		// 연결 처리
 		if (ctx->oper == OPER::ACCEPT) {
-			IOHandler::OnAccept(reinterpret_cast<AcceptContext*>(ctx, transferred));
+			IOHandler::OnAccept(reinterpret_cast<AcceptContext*>(ctx), transferred);
 			delete reinterpret_cast<AcceptContext*>(ctx);
 			WinSockManager::GetInstance().Async_accept(key);
 		}
