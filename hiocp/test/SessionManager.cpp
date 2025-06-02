@@ -21,6 +21,13 @@ int SessionManager::GenPk()
 	return pk++;
 }
 
+void SessionManager::BroadCasting(std::string msg)
+{
+	for (auto& [_, session] : sessions) {
+		session->pushSendQueue(msg);
+	}
+}
+
 void SessionManager::createSession(std::shared_ptr<Session> session)
 {
 	int pk = GenPk();

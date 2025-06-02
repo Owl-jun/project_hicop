@@ -13,6 +13,7 @@
 #include <unordered_map>
 #include <string>
 #include <istream>
+#include <type_traits>
 
 #include <WinSock2.h>
 #include <WS2tcpip.h>

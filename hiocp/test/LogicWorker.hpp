@@ -21,6 +21,6 @@ public:
 	}
 	void Run();
 	void PustTask(Task t);
-	void process(std::string msg);
+	void process(Task task);
 };
 

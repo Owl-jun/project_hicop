@@ -19,6 +19,9 @@
       <Filter>IO</Filter>
     </ClCompile>
     <ClCompile Include="LogicWorker.cpp" />
+    <ClCompile Include="b_Session.cpp">
+      <Filter>Session</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="utils">

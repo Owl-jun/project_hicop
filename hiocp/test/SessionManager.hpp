@@ -10,6 +10,7 @@ private:
 public:
 	static SessionManager& GetInstance();
 	static int GenPk(); 
+	void BroadCasting(std::string msg);
 	void createSession(std::shared_ptr<Session> session);
 	void closeSession(int pk);
 	int FindBySocket(SOCKET sock);
