@@ -6,6 +6,9 @@
 #include "SessionManager.hpp"
 #include "Server.hpp"
 #include "LogicWorker.hpp"
+
+
+
 const short PORT = fileutils::getPortByJson();
 LPFN_ACCEPTEX lpAcceptEx = nullptr;
 
@@ -18,11 +21,8 @@ int main() {
 	Server server;
 	LogicWorker::GetInstance().Run();
 	server.Run();
-
-	
 	
 	std::cout << "[*] Server running on port " << PORT << "\n";
-
 
 	return 0;
 }

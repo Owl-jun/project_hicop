@@ -42,6 +42,9 @@
     <Filter Include="IO">
       <UniqueIdentifier>{8c4391c9-99a6-4444-b221-87f63a22fdc8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Log">
+      <UniqueIdentifier>{8d9c92b6-6e96-4e3c-a297-ae7eee2ad000}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="utils.hpp">

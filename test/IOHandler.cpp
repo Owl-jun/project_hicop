@@ -28,7 +28,6 @@ void IOHandler::OnRecv(IOContext* ctx, size_t transferred)
 
 void IOHandler::OnSend(IOContext* ctx)
 {
-	std::cout << "Send Success " << std::endl;
 	timetest::GetInstance().stop();
 	std::cout << "현재 세션 수 : " << SessionManager::GetInstance().GetSessions().size() << std::endl;
 	ctx->oper = OPER::RECV;

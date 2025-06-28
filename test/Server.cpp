@@ -7,6 +7,7 @@
 #include "Session.hpp"
 #include "IOHandler.hpp"
 
+#define IO_THREAD_COUNT 12
 
 void Server::Thread_Work(HANDLE iocp)
 {
@@ -38,14 +39,12 @@ void Server::Thread_Work(HANDLE iocp)
 			continue;
 		}
 
-		// 연결 처리
 		if (ctx->oper == OPER::ACCEPT) {
 			IOHandler::OnAccept(reinterpret_cast<AcceptContext*>(ctx), transferred);
 			delete reinterpret_cast<AcceptContext*>(ctx);
 			WinSockManager::GetInstance().Async_accept(key);
 		}
 		else {
-			// 게이트웨이
 			switch (ctx->oper) {
 			case OPER::RECV:
 				IOHandler::OnRecv(reinterpret_cast<IOContext*>(ctx), transferred);
@@ -64,14 +63,14 @@ Server::Server()
 
 Server::~Server()
 {
-	for (int i = 0; i < 4; ++i) {
+	for (int i = 0; i < IO_THREAD_COUNT; ++i) {
 		IOPool[i].join();
 	}
 }
 
 void Server::Run()
 {
-	for (int i = 0; i < 4; ++i) {
+	for (int i = 0; i < IO_THREAD_COUNT; ++i) {
 		IOPool.push_back(std::thread([this]() {
 			Thread_Work(WinSockManager::GetInstance().GetIocp());
 			}));

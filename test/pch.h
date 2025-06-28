@@ -14,6 +14,8 @@
 #include <string>
 #include <istream>
 #include <type_traits>
+#include <atomic>
+#include <chrono>
 
 #include <WinSock2.h>
 #include <WS2tcpip.h>

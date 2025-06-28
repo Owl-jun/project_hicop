@@ -9,8 +9,6 @@ enum class TYPE { TYPE
 	, FINISH };
 const int ADDR_BUF_SIZE = sizeof(sockaddr_in) + 16;
 
-
-
 struct BaseContext {
 	OVERLAPPED overlapped = {};
 	OPER oper;

@@ -32,7 +32,7 @@ int main() {
 			SOCKADDR_IN address = { 0 };
 			address.sin_family = AF_INET;
 			address.sin_port = htons(12345);
-			inet_pton(AF_INET, "210.119.12.82", &address.sin_addr);
+			inet_pton(AF_INET, "127.0.0.1", &address.sin_addr);
 
 			int result = connect(consock, (sockaddr*)&address, sizeof(address));
 			if (result == SOCKET_ERROR) {
