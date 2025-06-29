@@ -18,20 +18,21 @@ void Server::Thread_Work(HANDLE iocp)
 	while (true) {
 		BOOL ok = GetQueuedCompletionStatus(iocp, &transferred, &key, &ov, INFINITE);
 		if (ov == nullptr) {
-			std::cerr << "[!] GQCS failed or shutdown\n";
+			std::cout << "[!] GQCS failed or shutdown\n";
 			continue;
 		}
 
 		auto* ctx = reinterpret_cast<BaseContext*>(ov);
 
+
 		if (!ok && transferred == 0) {
-			std::cerr << "[!] Client forcibly disconnected or error\n";
 
 			if (ctx->oper == OPER::ACCEPT) {
 				closesocket(ctx->clientSock);
 				delete reinterpret_cast<AcceptContext*>(ctx);
 			}
 			else {
+				std::cerr << "[!] Client forcibly disconnected or error\n";
 				auto* ioCtx = reinterpret_cast<IOContext*>(ctx);
 				auto pk = SessionManager::GetInstance().FindBySocket(ctx->clientSock);
 				SessionManager::GetInstance().closeSession(pk);

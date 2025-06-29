@@ -27,7 +27,7 @@ void LogicWorker::Run() {
 				Task task = TaskQueue.front();
 				TaskQueue.pop();
 				lock.unlock();
-				timetest::GetInstance().go();
+				//timetest::GetInstance().go();
 				process(task);
 			}
 		}));
@@ -49,6 +49,7 @@ void LogicWorker::process(Task task)
 	auto session = task.session;
 	std::string msg = task.packet;
 	std::istringstream iss(msg);
+	///// TEST
 	if (rawType == (char)1) {
 		std::string chatmsg = session->GetUID() + " : ";
 		std::string t;
@@ -65,6 +66,24 @@ void LogicWorker::process(Task task)
 		std::string uid;
 		iss >> uid;
 		session->SetUID(uid);
+	}
+	/////
+	else if (rawType == (char)5) {
+		if (session->GetUID() == "") {
+			std::string uid;
+			iss >> uid;
+			session->SetUID(uid);
+		}
+		std::string chatmsg = session->GetUID() + " : ";
+		std::string t;
+		while (iss >> t) {
+			chatmsg.append(t);
+		}
+		if (chatmsg[0] == ' ') { chatmsg.erase(chatmsg.begin()); }
+		if (chatmsg[chatmsg.size() - 1] == ' ') { chatmsg.erase(chatmsg.end() - 1); }
+		std::cout << chatmsg << std::endl;
+		SessionManager::GetInstance().BroadCasting(chatmsg);
+		// session->pushSendQueue(chatmsg);
 	}
 	else {
 		// 정의되지 않은 패킷 타입

@@ -8,6 +8,7 @@ bool IsValidPACKTYPE(char type) {
     return type == (char)1 ||
         type == (char)2 ||
         type == (char)4 ||
+        type == (char)5 ||
         type == (char)8;
 }
 
@@ -61,9 +62,15 @@ void Session::Send()
 
         ZeroMemory(ctx->buffer, sizeof(ctx->buffer));
         ctx->oper = OPER::SEND;
-        memcpy(ctx->buffer, sendmsg.c_str(), sendmsg.size());
+        char buf[5];
+        buf[0] = 0x05;
+        int msglen = sendmsg.size();
+        msglen = htonl(msglen);
+        memcpy(buf + 1, &msglen, 4);
+        memcpy(ctx->buffer, buf, 5);
+        memcpy(ctx->buffer + 5, sendmsg.c_str(), sendmsg.size());
         ctx->wsabuf.buf = ctx->buffer;
-        ctx->wsabuf.len = static_cast<ULONG>(sendmsg.size());
+        ctx->wsabuf.len = static_cast<ULONG>(sendmsg.size()+5);
         ZeroMemory(&ctx->overlapped, sizeof(ctx->overlapped));
         WSASend(ctx->clientSock, &ctx->wsabuf, 1, nullptr, ctx->flags, &ctx->overlapped, nullptr);
     }
@@ -72,11 +79,12 @@ void Session::Send()
 void Session::Recv(size_t transferred)
 {
     if (transferred == 0) {
-        std::cout << "[Recv] transferred == 0 (early or disconnection)";
-        ResetFSM();
-        ZeroMemory(&ctx->overlapped, sizeof(ctx->overlapped));
-        WSARecv(ctx->clientSock, &ctx->wsabuf, 1, nullptr, &ctx->flags, &ctx->overlapped, nullptr);
-        return;
+        std::cout << "[Recv] transferred == 0 (early or disconnection)" << std::endl;
+
+        auto pk = SessionManager::GetInstance().FindBySocket(ctx->clientSock);
+        SessionManager::GetInstance().closeSession(pk); // 여기서 closesocket, 세션 제거 등 수행
+
+        return; // 다시 Recv 호출 X
     }
 
     if (ctx->type == TYPE::TYPE) {
@@ -118,6 +126,7 @@ void Session::Recv(size_t transferred)
         {
             Task t = { shared_from_this(), type, payload };
             LogicWorker::GetInstance().PustTask(t);
+            std::cout << payload << std::endl;
             ResetFSM();  // FSM 초기화
         }
         else {
