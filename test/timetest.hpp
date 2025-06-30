@@ -21,7 +21,7 @@ public:
 	void stop() {
 		end = std::chrono::steady_clock::now();
 		duration = end - start;
-		std::cout << "경과시간 : " << duration.count() << std::endl;
+		//std::cout << "경과시간 : " << duration.count() << std::endl;
 	}
 
 };

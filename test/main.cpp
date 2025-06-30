@@ -13,6 +13,8 @@ const short PORT = fileutils::getPortByJson();
 LPFN_ACCEPTEX lpAcceptEx = nullptr;
 
 int main() {
+	SetConsoleOutputCP(CP_UTF8);
+
 	WinSockManager& wsm = WinSockManager::GetInstance();
 	wsm.Acceptor(PORT);
 	wsm.Accept_Mode(MODE::ASYNC);

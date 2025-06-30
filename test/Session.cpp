@@ -82,7 +82,7 @@ void Session::Recv(size_t transferred)
         std::cout << "[Recv] transferred == 0 (early or disconnection)" << std::endl;
         auto pk = SessionManager::GetInstance().FindBySocket(ctx->clientSock);
         SessionManager::GetInstance().closeSession(pk); // 여기서 closesocket, 세션 제거 등 수행
-        std::cout << "현재 세션 수 : " << SessionManager::GetInstance().GetSessions().size();
+        std::cout << "current Session Count : " << SessionManager::GetInstance().GetSessions().size();
 
         return; // 다시 Recv 호출 X
     }

@@ -23,7 +23,7 @@ void LogicWorker::Run() {
 				std::unique_lock<std::mutex> lock(qMutex);
 				cv.wait(lock, [&] {return !TaskQueue.empty(); });
 
-				std::cout << "로직워커진입" << std::endl;
+				std::cout << "Entered LogicWorker" << std::endl;
 				Task task = TaskQueue.front();
 				TaskQueue.pop();
 				lock.unlock();
