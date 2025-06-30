@@ -74,6 +74,11 @@ void LogicWorker::process(Task task)
 			iss >> uid;
 			session->SetUID(uid);
 		}
+		else
+		{
+			std::string dummy;
+			iss >> dummy;
+		}
 		std::string chatmsg = session->GetUID() + " : ";
 		std::string t;
 		while (iss >> t) {
